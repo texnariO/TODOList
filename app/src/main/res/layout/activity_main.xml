@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.MainActivity">
     <TextView
-        android:id="@+id/tvTODOIsEmpty"
+        android:id="@+id/mEmptyTv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/todo_empty"
@@ -17,15 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:id="@+id/rvTODOList"
+        android:id="@+id/mListRv"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/btnTODOList"
+        android:id="@+id/mAddBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add"
-        app:fab_colorNormal="@color/myColor"/>
+        app:fab_colorNormal="@color/Green"/>
 
 </FrameLayout>

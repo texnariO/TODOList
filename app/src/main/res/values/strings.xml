@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">TODOList</string>
     <string name="todo_empty">TODO List is Empty</string>
+    <string name="name">Name</string>
+    <string name="date">Date in format DD/MM/YYYY</string>
+    <string name="category">Category</string>
+    <string name="back">Back</string>
+    <string name="accept">Accept</string>
+    <string name="add">New Note Added</string>
+    <string-array name="category">
+        <item>Work</item>
+        <item>Shopping</item>
+        <item>Other</item>
+    </string-array>
 </resources>
