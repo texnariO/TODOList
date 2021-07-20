@@ -1,10 +1,16 @@
 package com.example.todolist.ui.activities
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.room.Room
 import com.example.todolist.R
+import com.example.todolist.model.DaoNote
+import com.example.todolist.model.DataBase
+import com.example.todolist.model.Note
+import com.example.todolist.ui.fragment.DialogFragmentNotes
 import com.example.todolist.utils.DateInputMask
 
 class AddActivity : AppCompatActivity() {
@@ -14,6 +20,8 @@ class AddActivity : AppCompatActivity() {
     var aNameEt: EditText? =null
     var aDateEt: EditText? =null
     var aCategorySpn: Spinner? =null
+    var aDataBase: DataBase? =null
+    var aNoteDao: DaoNote? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
@@ -40,13 +48,27 @@ class AddActivity : AppCompatActivity() {
     }
 
     fun addNote(){
-        //TODO SaveNode
-        Toast.makeText(this,R.string.add,Toast.LENGTH_LONG).show()
-        mainActivity()
+        if(aDateEt!!.text.isNotEmpty() && aNameEt!!.text.isNotEmpty()){
+            aDataBase = Room.databaseBuilder(applicationContext,DataBase::class.java,"note_table").allowMainThreadQueries().build()
+            aNoteDao = aDataBase!!.DaoNote()
+            aNoteDao!!.insert(Note(
+                aNoteDao!!.size()+1, aNameEt!!.text.toString(),aCategorySpn!!.selectedItem.toString(),
+                aDateEt!!.text.toString()
+            ))
+            Toast.makeText(this,R.string.add,Toast.LENGTH_LONG).show()
+            mainActivity()
+        }
+        else{
+            val DialogFragment = DialogFragmentNotes()
+            val manager  = supportFragmentManager
+            DialogFragment.show(manager,"Dialog")
+        }
     }
 
     fun mainActivity(){
         val intent = Intent(this@AddActivity,MainActivity::class.java)
         startActivity(intent)
     }
+
+
 }

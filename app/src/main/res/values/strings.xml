@@ -4,12 +4,15 @@
     <string name="name">Name</string>
     <string name="date">Date in format DD/MM/YYYY</string>
     <string name="category">Category</string>
-    <string name="back">Back</string>
-    <string name="accept">Accept</string>
+    <string name="back">Anuluj</string>
+    <string name="accept">Dodaj zadanie</string>
     <string name="add">New Note Added</string>
     <string-array name="category">
         <item>Work</item>
         <item>Shopping</item>
         <item>Other</item>
     </string-array>
+    <string name="error">Bad data</string>
+    <string name="error_mes">Bad data entered, please repeat the procedure</string>
+    <string name="ok">Ok</string>
 </resources>

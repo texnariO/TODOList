@@ -53,7 +53,3 @@ class DateInputMask(val input : EditText) {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
     }
 }
-//fun formatDate(date: Date?):String{
-//    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
-//    return dateFormat.format(date)
-//}

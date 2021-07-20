@@ -1,6 +1,7 @@
 package com.example.todolist.model
 
 import android.content.Context
+import android.provider.ContactsContract
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -12,13 +13,19 @@ abstract class DataBase : RoomDatabase() {
     abstract fun DaoNote():DaoNote
 
     companion object{
+        @Volatile
         private var INSTANCE: DataBase? = null
 
-        fun getDatabase(context: Context): DataBase?{
-            if(INSTANCE==null)
-                INSTANCE = Room.databaseBuilder(context,DataBase::class.java,"note_db").build()
-
-            return INSTANCE
+        fun getDatabase(context: Context): DataBase{
+            return INSTANCE ?: synchronized(this){
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    DataBase::class.java,
+                "note_table"
+                ).build()
+                INSTANCE = instance
+                instance
+            }
         }
         fun destroyInstance(){
             INSTANCE = null
